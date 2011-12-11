@@ -1,13 +1,11 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "conways_game_of_life_2/version"
 
 Gem::Specification.new do |s|
   s.name        = "conways_game_of_life_2"
-  s.version     = ConwaysGameOfLife2::VERSION
   s.authors     = ["Karthik Sirasanagandla"]
   s.email       = ["karthiks@thoughtworks.com"]
-  s.homepage    = ""
+  s.homepage    = "http://kartzontech.blogspot.com"
   s.summary     = %q{TODO: Write a gem summary}
   s.description = %q{TODO: Write a gem description}
 
