@@ -21,3 +21,9 @@ repeatedly to create further generations.
 Steps to creating a Ruby project with RSpec and Guard
 
 git://gist.github.com/1493494.git
+
+Assumption and Implementation approaches/techniques:
+1. No board/landscape/plane is assumed
+2. If there is a cell, it should be alive. We do not count for dead cells.
+3. Ruby's very own Observer library is used in the implementation
+4. Ruby kata: Its TDD in practice
