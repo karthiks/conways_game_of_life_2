@@ -4,8 +4,15 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+<=>	lib/cell.rb	/^  def <=> cell$/;"	f	class:Cell
+<=>	lib/position.rb	/^  def <=> posi$/;"	f	class:Position
 Cell	lib/cell.rb	/^class Cell$/;"	c
 GameOfLife	lib/conways_game_of_life_2.rb	/^class GameOfLife$/;"	c
-initialize	lib/cell.rb	/^  def initialize(x_pos, y_pos)$/;"	f	class:Cell
+Position	lib/position.rb	/^class Position$/;"	c
+generat	lib/conways_game_of_life_2.rb	/^  def generat$/;"	f	class:GameOfLife
+initialize	lib/cell.rb	/^  def initialize(x, y)$/;"	f	class:Cell
 initialize	lib/conways_game_of_life_2.rb	/^  def initialize(lives = [])$/;"	f	class:GameOfLife
+initialize	lib/position.rb	/^  def initialize(x,y)$/;"	f	class:Position
 life_cells	lib/conways_game_of_life_2.rb	/^  def life_cells(lives)$/;"	f	class:GameOfLife
+neighbours_count	lib/cell.rb	/^  def neighbours_count$/;"	f	class:Cell
+to_s	lib/position.rb	/^  def to_s$/;"	f	class:Position
