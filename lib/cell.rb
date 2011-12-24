@@ -13,7 +13,7 @@ class Cell
     return "(#{@x_position},#{@y_position})"
   end
 
-  def <=> (cell)
+  def <=> cell
     return -1 if cell.nil?
     result = @y_position <=> cell.y_position
     case result
