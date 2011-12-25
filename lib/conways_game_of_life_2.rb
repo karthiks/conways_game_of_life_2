@@ -17,6 +17,7 @@ class GameOfLife
       @board.mark
       @board.sweep
       puts "Generation #{index + 1}: #{@board.life_positions}"
+      @generations << @board.life_positions
     end
   end
 end

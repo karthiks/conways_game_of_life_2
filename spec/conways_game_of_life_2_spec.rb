@@ -30,6 +30,10 @@ describe GameOfLife do
       gol.generations_to_evolve.should == 0
     end
   end
-    
-  it "should test evolve"
+
+  describe "evolution" do  
+    it "should respond to evolve" do
+      GameOfLife.new.respond_to?(:evolve).should be_true
+    end
+  end
 end

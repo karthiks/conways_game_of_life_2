@@ -24,4 +24,7 @@ class Position
     return "(#{@x_position},#{@y_position})"
   end
 
+  def to_a
+    return [x_position, y_position]
+  end
 end
