@@ -36,5 +36,15 @@ describe Board do
       board.mark
       board.next_generation_lives.should == [Cell.new(board,0,0), Cell.new(board,0,1), Cell.new(board,1,1)]
     end
+
+    context "dead cell" do
+      it "should create new Cell for next generation, 
+      if neighbour count IS GREATER THAN 3 [over-crowding]" do
+        life_positions = [[0,0],[0,1],[0,2],[1,1],[2,2]]
+        board = Board.new(life_positions)
+        board.mark 
+        board.next_generation_lives.should include(Cell.new(board,2,1))
+      end
+    end
   end
 end
