@@ -1,3 +1,4 @@
+require 'set'
 
 class Board
 
@@ -42,8 +43,7 @@ class Board
     life_cell_positions.each do |posi|
       all_neighbour_cells.concat Cell.compute_neighbour_positions(posi[0],posi[1])
     end
-    puts (all_neighbour_cells.compact - life_cell_positions).inspect
-    (all_neighbour_cells.compact - life_cell_positions).each do |pos|
+    (all_neighbour_cells.to_set.to_a - life_cell_positions).each do |pos|
       case self.class.cell_neighbours_count(pos,self)
       when 3..8
         @next_generation_lives << Cell.new(self, pos[0], pos[1])

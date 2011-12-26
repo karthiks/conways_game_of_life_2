@@ -31,19 +31,20 @@ describe Board do
 
     it "should mark cell state to LIVES, 
     if neighbour count IS 2-3 [ideal-population]" do
-      life_positions = [[0,0],[0,1],[1,1],[2,2]]
+      life_positions = [[0,0],[0,1],[1,1]]
       board = Board.new(life_positions)
       board.mark
-      board.next_generation_lives.should == [Cell.new(board,0,0), Cell.new(board,0,1), Cell.new(board,1,1)]
+      board.next_generation_lives.should == [Cell.new(board,0,0), Cell.new(board,0,1), 
+        Cell.new(board,1,1),Cell.new(board,1,0)]
     end
 
     context "dead cell" do
       it "should create new Cell for next generation, 
       if neighbour count IS GREATER THAN 3 [over-crowding]" do
-        life_positions = [[0,0],[0,1],[0,2],[1,1],[2,2]]
+        life_positions = [[0,0],[1,2],[2,0]]
         board = Board.new(life_positions)
         board.mark 
-        board.next_generation_lives.should include(Cell.new(board,1,2))
+        board.next_generation_lives.should  == [Cell.new(board,1,1)]
       end
     end
   end
