@@ -43,7 +43,7 @@ describe Board do
         life_positions = [[0,0],[0,1],[0,2],[1,1],[2,2]]
         board = Board.new(life_positions)
         board.mark 
-        board.next_generation_lives.should include(Cell.new(board,2,1))
+        board.next_generation_lives.should include(Cell.new(board,1,2))
       end
     end
   end

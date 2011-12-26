@@ -12,7 +12,7 @@ class Cell
 
   def initialize(board, x, y)
     @position = Position.new(x,y)
-    @neighbour_positions = compute_neighbour_positions(x,y)
+    @neighbour_positions = self.class.compute_neighbour_positions(x,y)
     @board = board
   end
 
@@ -28,7 +28,7 @@ class Cell
     count
   end
 
-  def compute_neighbour_positions(x,y)
+  def self.compute_neighbour_positions(x,y)
     pos = [ [x-1,y], [x+1,y], #neighbours in same row
       [x-1,y+1], [x,y+1], [x+1,y+1], #neighbours in top row
       [x-1,y-1], [x,y-1], [x+1,y-1] ] #neighbours in bottom row
