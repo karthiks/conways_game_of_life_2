@@ -11,42 +11,41 @@ class Board
   end
 
   def life_cells(positions)
-    return [] if positions.nil?
     cells = []
-    positions.each do |x_position,y_position|
-      cells << Cell.new(self, x_position,y_position)
+    positions.each do |position|
+      cells << Cell.new(self, position)
     end
     cells
   end
 
   def self.cell_neighbours_count(posi, board)
-    count = Cell.compute_neighbour_positions(posi[0],posi[1]).inject(0) do |count, pos| 
-      (board.life_cell_positions.include? [pos[0],pos[1]]) ? count + 1 : count
+    count = Cell.compute_neighbour_positions(posi.x_position,posi.y_position).inject(0) do |count, pos| 
+      (board.life_cell_positions.include? pos) ? count + 1 : count
     end
     count
   end
 
   def mark
     @current_generation_lives.each do |life|
-      arr = life.position.to_a
       case life.neighbours_count
       when 2..3
+        @next_generation_lives << life.dup
         life.state = Cell::LIVES
-        @next_generation_lives << Cell.new(self,arr[0],arr[1])
       else
         life.state = Cell::DIES
       end
     end
 
     #Identifying the possibility of birth of new cell
-    all_neighbour_cells = []
+    all_neighbour_cell_positions = []
     life_cell_positions.each do |posi|
-      all_neighbour_cells.concat Cell.compute_neighbour_positions(posi[0],posi[1])
+      all_neighbour_cell_positions.concat Cell.compute_neighbour_positions(posi.x_position,posi.y_position)
     end
-    (all_neighbour_cells.to_set.to_a - life_cell_positions).each do |pos|
-      case self.class.cell_neighbours_count(pos,self)
+    (all_neighbour_cell_positions - life_cell_positions).each do |p|
+      case self.class.cell_neighbours_count(p,self)
       when 3..8
-        @next_generation_lives << Cell.new(self, pos[0], pos[1])
+        cell = Cell.new(self, p)
+        @next_generation_lives << cell unless @next_generation_lives.include? cell
       end
     end
   end

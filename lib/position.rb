@@ -20,6 +20,18 @@ class Position
     end
   end
 
+  def eql? p
+    if self.x_position == p.x_position &&
+      self.y_position == p.y_position
+      return true
+    end
+    false
+  end
+
+  def hash
+    x_position * 11 + y_position
+  end
+
   def to_s
     return "(#{@x_position},#{@y_position})"
   end
