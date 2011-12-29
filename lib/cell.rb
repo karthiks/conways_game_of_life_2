@@ -43,11 +43,7 @@ class Cell
   end
 
   def self.compute_neighbour_positions(position)
-    x,y = position.x_position, position.y_position
-    pos = [ [x-1,y], [x+1,y], #neighbours in same row
-      [x-1,y+1], [x,y+1], [x+1,y+1], #neighbours in top row
-      [x-1,y-1], [x,y-1], [x+1,y-1] ] #neighbours in bottom row
-    pos.map {|p| p.to_pos}
+    position.neighbours.map {|p| p.to_pos}
   end
 
   def to_s
