@@ -19,7 +19,7 @@ class Board
   end
 
   def self.cell_neighbours_count(posi, board)
-    count = Cell.compute_neighbour_positions(posi.x_position,posi.y_position).inject(0) do |count, pos| 
+    count = Cell.compute_neighbour_positions(posi).inject(0) do |count, pos| 
       (board.life_cell_positions.include? pos) ? count + 1 : count
     end
     count
@@ -39,7 +39,7 @@ class Board
     #Identifying the possibility of birth of new cell
     all_neighbour_cell_positions = []
     life_cell_positions.each do |posi|
-      all_neighbour_cell_positions.concat Cell.compute_neighbour_positions(posi.x_position,posi.y_position)
+      all_neighbour_cell_positions.concat Cell.compute_neighbour_positions(posi)
     end
     (all_neighbour_cell_positions - life_cell_positions).each do |p|
       case self.class.cell_neighbours_count(p,self)

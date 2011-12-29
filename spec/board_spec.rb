@@ -27,8 +27,6 @@ describe Board do
     if neighbour count IS GREATER THAN 3 [over-crowding]" do
       life_positions = [[0,0],[0,1],[0,2],[1,1],[2,2]].map {|p| p.to_pos}
       board = Board.new(life_positions)
-      c1 = Cell.new(board,[1,1].to_pos)
-      c2 = Cell.new(board,[1,1].to_pos)
       board.mark 
       board.next_generation_lives.should_not include(Cell.new(board,[1,1].to_pos))
     end
