@@ -2,12 +2,15 @@ require 'set'
 
 class Board
 
-  attr_reader :life_cell_positions, :current_generation_lives, :next_generation_lives
+  attr_reader :life_cell_positions,
+    :previous_generation_lives,
+    :current_generation_lives,
+    :next_generation_lives
 
   def initialize(life_positions)
     @life_cell_positions = life_positions
     @current_generation_lives = life_cells(@life_cell_positions)
-    @next_generation_lives = []
+    @previous_generation_lives = @next_generation_lives = []
   end
 
   def life_cells(positions)
@@ -48,5 +51,11 @@ class Board
         @next_generation_lives << cell unless @next_generation_lives.include? cell
       end
     end
+  end
+
+  def sweep
+    @previous_generation_lives = @current_generation_lives
+    @current_generation_lives = @next_generation_lives
+    @next_generation_lives = []
   end
 end

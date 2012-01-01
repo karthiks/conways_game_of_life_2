@@ -10,16 +10,14 @@ class GameOfLife
     @generations = []
     @generations_to_evolve = generations_count
     @board = Board.new(unique_life_positions(lives))
-    @generations << @board.life_cell_positions
+    @generations << @board.current_generation_lives
   end
 
   def evolve
-    #puts "Generation 0: #{@current_generation}"
-    generations_count.times do |index|
+    generations_to_evolve.times do |index|
       @board.mark
       @board.sweep
-      #puts "Generation #{index + 1}: #{@board.life_positions}"
-      @generations << @board.life_positions
+      @generations << @board.current_generation_lives
     end
   end
 
